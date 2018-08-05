@@ -1,0 +1,171 @@
+---
+- hosts: localhost
+
+  tasks:
+    - name: Install playbook deps
+      become: yes
+      apt:
+        name: '{{ item }}'
+      with_items:
+        - python-apt
+        - python3-apt
+
+    - name: Install 3rd party repos keys
+      become: yes
+      apt_key:
+        url: '{{ item }}'
+        state: present
+      with_items:
+        - https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+        - https://dl.google.com/linux/linux_signing_key.pub
+        - https://packages.cloud.google.com/apt/doc/apt-key.gpg
+        - https://download.sublimetext.com/sublimehq-pub.gpg
+        - http://packages.microsoft.com/keys/microsoft.asc
+        - https://repo.skype.com/data/SKYPE-GPG-KEY
+        - https://www.virtualbox.org/download/oracle_vbox_2016.asc
+        - https://packagecloud.io/AtomEditor/atom/gpgkey
+        - https://download.docker.com/linux/ubuntu/gpg
+
+    - name: Install 3rd party repos
+      become: yes
+      apt_repository:
+        repo: '{{ item.repo }}'
+        filename: '{{ item.filename }}'
+        update_cache: no
+      with_items:
+        - { repo: 'deb https://deb.nodesource.com/node_8.x bionic main', filename: 'nodesource' }
+        - { repo: 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main', filename: 'google-chrome' }
+        - { repo: 'deb http://packages.cloud.google.com/apt cloud-sdk-bionic main', filename: 'google-cloud-sdk' }
+        - { repo: 'deb https://download.sublimetext.com/ apt/stable/', filename: 'sublime-text' }
+        - { repo: 'deb http://packages.microsoft.com/repos/vscode stable main', filename: 'vscode' }
+        - { repo: 'deb [arch=amd64] https://repo.skype.com/deb stable main', filename: 'skype-stable' }
+        - { repo: 'deb https://download.virtualbox.org/virtualbox/debian bionic contrib', filename: 'virtualbox' }
+        - { repo: 'deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main', filename: 'atom'}
+        - { repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable', filename: 'docker-ce'}
+        - { repo: 'ppa:remmina-ppa-team/remmina-next', filename: ''}
+        - { repo: 'ppa:webupd8team/java', filename: ''}
+
+    - name: Install all the software
+      become: yes
+      apt:
+        name: '{{ item }}'
+        update_cache: yes
+      with_items:
+        - nodejs
+        - google-chrome-stable
+        - google-cloud-sdk
+        - google-cloud-sdk-pubsub-emulator
+        - google-cloud-sdk-datastore-emulator
+        - kubectl
+        - sublime-text
+        - code
+        - skypeforlinux
+        #- virtualbox-5.2
+        - atom
+        - docker-ce
+        - oracle-java8-installer
+        - oracle-java8-set-default
+        - remmina
+        - remmina-plugin-rdp
+        - remmina-plugin-secret
+        - remmina-plugin-vnc
+        - remmina-plugin-spice
+
+    - name: Install utils
+      become: yes
+      apt:
+        name: '{{ item }}'
+      with_items:
+        - mc
+        - fonts-firacode
+        - pigz
+        - xz-utils
+        - git
+        - git-gui
+        - gitk
+        - meld
+        - php-cli
+        - wine-stable
+        - winetricks
+        - gnome-exe-thumbnailer
+
+    - name: Get Mysql Workbench
+      become: yes
+      apt:
+        deb: https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community_8.0.12-1ubuntu18.04_amd64.deb
+
+    - name: Install KVM and utils
+      become: yes
+      apt:
+        name: '{{ item }}'
+      with_items:
+        - qemu
+        - qemu-kvm
+        - virt-manager
+        - bridge-utils
+        - libvirt-daemon-system
+        - virt-top
+        - ssh-askpass
+        - virtinst
+        - qemu-utils
+        - libguestfs-tools
+        - libosinfo-bin
+
+    - name: Create NPM global dir
+      file:
+        path: '~/.npm-global'
+        state: directory
+
+    - name: Set NPM global dir in my home
+      shell: >
+        npm config set prefix '~/.npm-global'
+      args:
+        executable: /bin/bash
+
+    - name: Set NPM global bin in PATH
+      lineinfile:
+        state: present
+        path: ~/.profile
+        regexp: 'npm-global/bin'
+        line: 'export PATH=$HOME/.npm-global/bin:$PATH'
+
+    - name: Install NPM globals
+      shell: >
+        npm -g i npm-check eslint jshint typescript typings
+      args:
+        executable: /bin/bash
+      environment:
+        PATH: ~/.npm-global/bin:{{ ansible_env.PATH }}
+
+    - name: Git global config
+      git_config:
+        name: '{{ item name }}'
+        scope: global
+        value: '{{ item.value }}'
+      with_items:
+        - { name: user.email , value: catalin.nicolescu@gmail.com }
+        - { name: user.name , value: 'Catalin Nicolescu' }
+        - { name: core.editor , value: subl -n -w }
+        - { name: merge.tool , value: meld }
+        - { name: core.autocrlf , value: input }
+        - { name: core.whitespace , value: trailing-space,space-before-tab }
+
+    - name: Composer global packages
+      composer:
+        command: require
+        global_command: yes
+        arguments: squizlabs/php_codesniffer phpmd/phpmd friendsofphp/php-cs-fixer deployer/deployer
+
+    - name: Set Composer global bin in PATH
+      lineinfile:
+        state: present
+        path: ~/.profile
+        regexp: 'composer/vendor/bin'
+        line: 'export PATH=$HOME/.composer/vendor/bin:$PATH'
+
+    - name: Set ANDROID_HOME
+      lineinfile:
+        state: present
+        path: ~/.profile
+        regexp: 'ANDROID_HOME'
+        line: 'export ANDROID_HOME=$HOME/android-sdk-linux'
