@@ -93,7 +93,7 @@
       become: yes
       apt:
         deb: https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community_8.0.12-1ubuntu18.04_amd64.deb
-
+       
     - name: Install KVM and utils
       become: yes
       apt:
@@ -136,7 +136,22 @@
         executable: /bin/bash
       environment:
         PATH: ~/.npm-global/bin:{{ ansible_env.PATH }}
-
+        
+    - name: Get Hyper
+      become: yes
+      apt:
+        deb: https://github.com/zeit/hyper/releases/download/2.0.0/hyper_2.0.0_amd64.deb
+        
+    - name: Install Hyper plugins
+      shell: "hyper i {{ item }}"
+      with_items: 
+        - hyper-tabs-enhanced
+        - hyper-material-theme
+        - hyper-pane
+        - hypercwd
+      args:
+        executable: /bin/bash
+        
     - name: Git global config
       git_config:
         name: '{{ item name }}'
