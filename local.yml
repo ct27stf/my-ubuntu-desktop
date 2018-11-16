@@ -92,7 +92,7 @@
     - name: Get Mysql Workbench
       become: yes
       apt:
-        deb: https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community_8.0.12-1ubuntu18.04_amd64.deb
+        deb: https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community_8.0.13-1ubuntu18.04_amd64.deb
        
     - name: Install KVM and utils
       become: yes
