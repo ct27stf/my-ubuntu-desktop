@@ -130,8 +130,8 @@
         line: 'export PATH=$HOME/.npm-global/bin:$PATH'
 
     - name: Install NPM globals
-      shell: >
-        npm -g i npm-check eslint jshint typescript typings
+      shell: |
+        npm -g i npm-check eslint typescript typings webpack webpack-cli lodash-cli fx terminalizer lighthouse
       args:
         executable: /bin/bash
       environment:
