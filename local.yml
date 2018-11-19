@@ -43,7 +43,6 @@
         - { repo: 'deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main', filename: 'atom'}
         - { repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable', filename: 'docker-ce'}
         - { repo: 'ppa:remmina-ppa-team/remmina-next', filename: ''}
-        - { repo: 'ppa:webupd8team/java', filename: ''}
 
     - name: Install all the software
       become: yes
@@ -63,8 +62,6 @@
         #- virtualbox-5.2
         - atom
         - docker-ce
-        - oracle-java8-installer
-        - oracle-java8-set-default
         - remmina
         - remmina-plugin-rdp
         - remmina-plugin-secret
