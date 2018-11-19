@@ -157,6 +157,36 @@
       args:
         executable: /bin/bash
         
+    - name: Install VSCode plugins
+      shell: "code --install-extension {{ item }}"
+      with_items: 
+        - annsk.alignment
+        - bmewburn.vscode-intelephense-client
+        - Calsmurf2904.vscode-phpstan
+        - dbaeumer.vscode-eslint
+        - eamodio.gitlens
+        - ecodes.vscode-phpmd
+        - EditorConfig.EditorConfig
+        - felixfbecker.php-intellisense
+        - ikappas.phpcs
+        - junstyle.php-cs-fixer
+        - mikestead.dotenv
+        - mrded.railscasts
+        - ms-vscode.sublime-keybindings
+        - ms-vscode.typescript-javascript-grammar
+        - ms-vscode.vscode-typescript-tslint-plugin
+        - ms-vsliveshare.vsliveshare
+        - neilbrayfield.php-docblocker
+        - persoderlind.vscode-phpcbf
+        - PeterJausovec.vscode-docker
+        - PKief.material-icon-theme
+        - pnp.polacode
+        - TysonAndre.php-phan
+        - vscoss.vscode-ansible
+        - yzhang.markdown-all-in-one
+      args:
+        executable: /bin/bash
+        
     - name: Git global config
       git_config:
         name: '{{ item.name }}'
