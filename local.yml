@@ -5,10 +5,11 @@
     - name: Install playbook deps
       become: yes
       apt:
-        name: '{{ item }}'
-      with_items:
-        - python-apt
-        - python3-apt
+        name: '{{ packages }}'
+      vars:
+        packages:
+          - python-apt
+          - python3-apt
 
     - name: Install 3rd party repos keys
       become: yes
@@ -47,44 +48,50 @@
     - name: Install all the software
       become: yes
       apt:
-        name: '{{ item }}'
+        name: '{{ packages }}'
         update_cache: yes
-      with_items:
-        - nodejs
-        - google-chrome-stable
-        - google-cloud-sdk
-        - google-cloud-sdk-pubsub-emulator
-        - google-cloud-sdk-datastore-emulator
-        - kubectl
-        - sublime-text
-        - code
-        - skypeforlinux
-        #- virtualbox-5.2
-        - atom
-        - docker-ce
-        - remmina
-        - remmina-plugin-rdp
-        - remmina-plugin-secret
-        - remmina-plugin-vnc
-        - remmina-plugin-spice
+      vars:
+        packages:
+          - nodejs
+          - google-chrome-stable
+          - google-cloud-sdk
+          - google-cloud-sdk-pubsub-emulator
+          - google-cloud-sdk-datastore-emulator
+          - kubectl
+          - sublime-text
+          - code
+          - skypeforlinux
+          #- virtualbox-5.2
+          - atom
+          - docker-ce
+          - remmina
+          - remmina-plugin-rdp
+          - remmina-plugin-secret
+          - remmina-plugin-vnc
+          - remmina-plugin-spice
 
     - name: Install utils
       become: yes
       apt:
-        name: '{{ item }}'
-      with_items:
-        - mc
-        - fonts-firacode
-        - pigz
-        - xz-utils
-        - git
-        - git-gui
-        - gitk
-        - meld
-        - php-cli
-        - wine-stable
-        - winetricks
-        - gnome-exe-thumbnailer
+        name: '{{ packages }}'
+      vars:
+        packages:
+          - mc
+          - fonts-firacode
+          - pigz
+          - xz-utils
+          - git
+          - git-gui
+          - gitk
+          - meld
+          - php-cli
+          - php-ast
+          - php-curl
+          - php-ssh2
+          - php-xml
+          - wine-stable
+          - winetricks
+          - gnome-exe-thumbnailer
 
     - name: Get Mysql Workbench
       become: yes
@@ -94,19 +101,20 @@
     - name: Install KVM and utils
       become: yes
       apt:
-        name: '{{ item }}'
-      with_items:
-        - qemu
-        - qemu-kvm
-        - virt-manager
-        - bridge-utils
-        - libvirt-daemon-system
-        - virt-top
-        - ssh-askpass
-        - virtinst
-        - qemu-utils
-        - libguestfs-tools
-        - libosinfo-bin
+        name: '{{ packages }}'
+      vars:
+        packages:
+          - qemu
+          - qemu-kvm
+          - virt-manager
+          - bridge-utils
+          - libvirt-daemon-system
+          - virt-top
+          - ssh-askpass
+          - virtinst
+          - qemu-utils
+          - libguestfs-tools
+          - libosinfo-bin
 
     - name: Create NPM global dir
       file:
