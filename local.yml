@@ -193,12 +193,12 @@
         scope: global
         value: '{{ item.value }}'
       with_items:
-        - { name: user.email , value: catalin.nicolescu@gmail.com }
+        - { name: user.email , value: 'catalin.nicolescu@gmail.com' }
         - { name: user.name , value: 'Catalin Nicolescu' }
-        - { name: core.editor , value: subl -n -w }
-        - { name: merge.tool , value: meld }
-        - { name: core.autocrlf , value: input }
-        - { name: core.whitespace , value: trailing-space,space-before-tab }
+        - { name: core.editor , value: 'subl -n -w' }
+        - { name: merge.tool , value: 'meld' }
+        - { name: core.autocrlf , value: 'input' }
+        - { name: core.whitespace , value: 'trailing-space,space-before-tab' }
 
     - name: Composer global packages
       composer:
