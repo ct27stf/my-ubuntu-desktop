@@ -136,7 +136,7 @@
 
     - name: Install NPM globals
       shell: |
-        npm -g i npm-check eslint typescript typings webpack webpack-cli lodash-cli fx terminalizer lighthouse
+        npm -g i npm-check eslint typescript tslint typings webpack webpack-cli lodash-cli fx terminalizer lighthouse
       args:
         executable: /bin/bash
       environment:
