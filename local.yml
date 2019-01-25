@@ -38,9 +38,9 @@
         - { repo: 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main', filename: 'google-chrome' }
         - { repo: 'deb http://packages.cloud.google.com/apt cloud-sdk-bionic main', filename: 'google-cloud-sdk' }
         - { repo: 'deb https://download.sublimetext.com/ apt/stable/', filename: 'sublime-text' }
-        - { repo: 'deb http://packages.microsoft.com/repos/vscode stable main', filename: 'vscode' }
+        - { repo: 'deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main', filename: 'vscode' }
         - { repo: 'deb [arch=amd64] https://repo.skype.com/deb stable main', filename: 'skype-stable' }
-        - { repo: 'deb https://download.virtualbox.org/virtualbox/debian bionic contrib', filename: 'virtualbox' }
+        - { repo: 'deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian bionic contrib', filename: 'virtualbox' }
         - { repo: 'deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main', filename: 'atom'}
         - { repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable', filename: 'docker-ce'}
         - { repo: 'ppa:remmina-ppa-team/remmina-next', filename: ''}
