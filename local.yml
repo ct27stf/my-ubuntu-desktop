@@ -167,8 +167,10 @@
         - eamodio.gitlens
         - ecodes.vscode-phpmd
         - EditorConfig.EditorConfig
+        - felixfbecker.php-debug
         - felixfbecker.php-intellisense
         - ikappas.phpcs
+        - jevakallio.vscode-hacker-typer
         - junstyle.php-cs-fixer
         - mikestead.dotenv
         - mrded.railscasts
@@ -181,7 +183,7 @@
         - PeterJausovec.vscode-docker
         - PKief.material-icon-theme
         - pnp.polacode
-        - TysonAndre.php-phan
+        - VisualStudioExptTeam.vscodeintellicode
         - vscoss.vscode-ansible
         - yzhang.markdown-all-in-one
       args:
