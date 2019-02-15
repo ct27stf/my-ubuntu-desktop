@@ -163,6 +163,8 @@
         - annsk.alignment
         - bmewburn.vscode-intelephense-client
         - Calsmurf2904.vscode-phpstan
+        # extensia pe care o asteptam de o viata
+        - coenraads.bracket-pair-colorizer-2
         - dbaeumer.vscode-eslint
         - eamodio.gitlens
         - ecodes.vscode-phpmd
