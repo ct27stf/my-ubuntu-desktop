@@ -98,6 +98,11 @@
       become: yes
       apt:
         deb: https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community_8.0.15-1ubuntu18.04_amd64.deb
+        
+    - name: Install bat
+      become: yes
+      apt:
+        deb: https://github.com/sharkdp/bat/releases/download/v0.10.0/bat_0.10.0_amd64.deb
        
     - name: Install KVM and utils
       become: yes
