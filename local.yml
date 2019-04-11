@@ -44,6 +44,7 @@
         - { repo: 'deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main', filename: 'atom'}
         - { repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable', filename: 'docker-ce'}
         - { repo: 'ppa:remmina-ppa-team/remmina-next', filename: ''}
+        - { repo: 'ppa:eosrei/fonts', filename: ''}
 
     - name: Install all the software
       become: yes
@@ -93,6 +94,7 @@
           - wine-stable
           - winetricks
           - gnome-exe-thumbnailer
+          - fonts-twemoji-svginot
 
     - name: Get Mysql Workbench
       become: yes
@@ -242,6 +244,7 @@
         - VisualStudioExptTeam.vscodeintellicode
         - vscoss.vscode-ansible
         - yzhang.markdown-all-in-one
+        - bierner.emojisense
       args:
         executable: /bin/bash
         
