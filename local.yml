@@ -201,7 +201,7 @@
     - name: Get Hyper
       become: yes
       apt:
-        deb: https://github.com/zeit/hyper/releases/download/3.0.0/hyper_3.0.0_amd64.deb
+        deb: https://github.com/zeit/hyper/releases/download/3.0.2/hyper_3.0.2_amd64.deb
         
     - name: Install Hyper plugins
       shell: "hyper i {{ item }}"
