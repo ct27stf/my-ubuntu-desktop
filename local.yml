@@ -34,7 +34,7 @@
         filename: '{{ item.filename }}'
         update_cache: no
       with_items:
-        - { repo: 'deb https://deb.nodesource.com/node_8.x bionic main', filename: 'nodesource' }
+        - { repo: 'deb https://deb.nodesource.com/node_10.x bionic main', filename: 'nodesource' }
         - { repo: 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main', filename: 'google-chrome' }
         - { repo: 'deb http://packages.cloud.google.com/apt cloud-sdk-bionic main', filename: 'google-cloud-sdk' }
         - { repo: 'deb https://download.sublimetext.com/ apt/stable/', filename: 'sublime-text' }
@@ -95,6 +95,19 @@
           - winetricks
           - gnome-exe-thumbnailer
           - fonts-twemoji-svginot
+
+    - name: Download MiniKube
+      become: yes
+      get_url:
+        url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+        dest: /usr/local/bin/minikube
+        mode: 0755
+        
+    - name: Install Helm
+      become: yes
+      snap:
+        name: helm
+        classic: yes
 
     - name: Get Mysql Workbench
       become: yes
@@ -165,6 +178,8 @@
           - virt-manager
           - bridge-utils
           - libvirt-daemon-system
+          - libvirt-clients
+          - qemu-kvm
           - virt-top
           - ssh-askpass
           - virtinst
@@ -235,7 +250,7 @@
         - ms-vscode.sublime-keybindings
         - ms-vscode.typescript-javascript-grammar
         - ms-vscode.vscode-typescript-tslint-plugin
-        - ms-vsliveshare.vsliveshare
+        - ext install MS-vsliveshare.vsliveshare-pack
         - neilbrayfield.php-docblocker
         - persoderlind.vscode-phpcbf
         - PeterJausovec.vscode-docker
@@ -245,6 +260,9 @@
         - vscoss.vscode-ansible
         - yzhang.markdown-all-in-one
         - bierner.emojisense
+        - redhat.vscode-yaml
+        - GoogleCloudTools.cloudcode
+        - ms-kubernetes-tools.vscode-kubernetes-tools
       args:
         executable: /bin/bash
         
