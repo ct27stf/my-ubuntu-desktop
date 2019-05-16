@@ -117,7 +117,7 @@
     - name: Install bat
       become: yes
       apt:
-        deb: https://github.com/sharkdp/bat/releases/download/v0.10.0/bat_0.10.0_amd64.deb
+        deb: https://github.com/sharkdp/bat/releases/download/v0.11.0/bat_0.11.0_amd64.deb
         
     - name: Install HashiCorp Consul
       become: yes
