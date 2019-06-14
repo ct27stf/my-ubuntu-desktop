@@ -130,6 +130,7 @@
       shell: consul -autocomplete-install
       args:
         executable: /bin/bash
+      ignore_errors: yes
 
     - name: Install HashiCorp Nomad
       become: yes
@@ -142,11 +143,12 @@
       shell: nomad -autocomplete-install
       args:
         executable: /bin/bash
+      ignore_errors: yes
       
     - name: Install HashiCorp Terraform
       become: yes
       unarchive:
-        src: https://releases.hashicorp.com/terraform/0.12.1/terraform_0.12.1_linux_amd64.zip
+        src: https://releases.hashicorp.com/terraform/0.12.2/terraform_0.12.2_linux_amd64.zip
         dest: /usr/local/bin
         remote_src: yes
         
@@ -154,6 +156,7 @@
       shell: terraform -autocomplete-install
       args:
         executable: /bin/bash
+      ignore_errors: yes
       
     - name: Install HashiCorp Packer
       become: yes
@@ -166,6 +169,7 @@
       shell: packer -autocomplete-install
       args:
         executable: /bin/bash
+      ignore_errors: yes
        
     - name: Install KVM and utils
       become: yes
