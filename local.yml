@@ -154,7 +154,7 @@
         remote_src: yes
         
     - name: Install Terraform bash completion
-      shell: terraform -autocomplete-install
+      shell: terraform -install-autocomplete
       args:
         executable: /bin/bash
       ignore_errors: yes
