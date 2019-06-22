@@ -255,10 +255,10 @@
         - ms-vscode.sublime-keybindings
         - ms-vscode.typescript-javascript-grammar
         - ms-vscode.vscode-typescript-tslint-plugin
-        - ext install MS-vsliveshare.vsliveshare-pack
+        - MS-vsliveshare.vsliveshare-pack
         - neilbrayfield.php-docblocker
         - persoderlind.vscode-phpcbf
-        - PeterJausovec.vscode-docker
+        - ms-azuretools.vscode-docker
         - PKief.material-icon-theme
         - pnp.polacode
         - VisualStudioExptTeam.vscodeintellicode
@@ -271,6 +271,7 @@
         - johnpapa.vscode-peacock
         - ms-vscode-remote.remote-ssh
         - ms-vscode-remote.remote-containers
+        - mhutchie.git-graph
       args:
         executable: /bin/bash
         
