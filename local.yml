@@ -238,7 +238,7 @@
       with_items: 
         - annsk.alignment
         - bmewburn.vscode-intelephense-client
-        - Calsmurf2904.vscode-phpstan
+        - breezelin.phpstan
         # extensia pe care o asteptam de o viata
         - coenraads.bracket-pair-colorizer-2
         - dbaeumer.vscode-eslint
