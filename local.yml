@@ -26,6 +26,7 @@
         - https://www.virtualbox.org/download/oracle_vbox_2016.asc
         - https://packagecloud.io/AtomEditor/atom/gpgkey
         - https://download.docker.com/linux/ubuntu/gpg
+        - https://apt.releases.hashicorp.com/gpg
 
     - name: Install 3rd party repos
       become: yes
@@ -46,6 +47,7 @@
         - { repo: 'ppa:git-core/ppa', filename: ''}
         - { repo: 'ppa:remmina-ppa-team/remmina-next', filename: ''}
         - { repo: 'ppa:eosrei/fonts', filename: ''}
+        - { repo: 'deb [arch=amd64] https://apt.releases.hashicorp.com bionic main', filename: 'hashicorp'}
 
     - name: Install all the software
       become: yes
